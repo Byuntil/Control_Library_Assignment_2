@@ -16,9 +16,9 @@ public class Member extends Person {
     void PrintRentalList() {
         //(C)
         // 대출 중인 도서를 출력
-       bookHash.forEach((key,value)->{
-           System.out.println("도서번호 : "+ getBookHash().get(key).getBookNumber()+", " + "도서 명 : "
-                   + getBookHash().get(key).getName() + ", " + "도서 장르 : "+getBookHash().get(key).getGenre());
-       });
+        bookHash.forEach((key, value) -> {
+            System.out.println("도서번호 : " + getBookHash().get(key).getBookNumber() + ", " + "도서 명 : "
+                    + getBookHash().get(key).getName() + ", " + "도서 장르 : " + getBookHash().get(key).getGenre());
+        });
     }
 }

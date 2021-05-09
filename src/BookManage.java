@@ -13,7 +13,7 @@ public class BookManage {
     void printBookList() {
         //(F)
         // bookHash 에 저장된 모든 도서 정보 출력
-        bookHash.forEach((key,value)->{
+        bookHash.forEach((key, value) -> {
             System.out.println("도서번호 : " + bookHash.get(key).getBookNumber() + ", " + "도서 명 : " + bookHash.get(key).getName()
                     + ", " + "도서 장르 : " + bookHash.get(key).getGenre() + ", " + "재고 : " + bookHash.get(key).getStock());
         });
@@ -40,11 +40,11 @@ public class BookManage {
                     int bookStock = scanner.nextInt();
                     Book book = new Book(bookNumber, bookName, bookGenre, bookStock);
                     bookHash.put(bookNumber, book);
-                }else{
+                } else {
                     System.out.println("갱신 불가능.\n");
                     return false;
                 }
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 System.out.print("도서 이름 : ");
                 String bookName = scanner.next();
                 System.out.print("도서 장르 : ");
@@ -75,14 +75,15 @@ public class BookManage {
             System.out.print("추가하고자 하는 수량 : ");
             int bookStock = scanner.nextInt();
             bookHash.get(bookNumber).updateStock(bookStock);
-            //추가한 후의 수량
-            int updateStock = bookHash.get(bookNumber).getStock();
-            System.out.println("[도서번호 : " + bookNumber + "] + [도서명 : "+bookHash.get(bookNumber).getName()+"]의 수량이 "
-                    +originalStock+"에서 "+updateStock+"로 증가되었습니다.");
             if (bookStock < 0) {
                 System.out.println("추가하고자 하는 재고 수량이 0보다 작아 갱신 불가능.\n");
                 return false;
             }
+            //추가한 후의 수량
+            int updateStock = bookHash.get(bookNumber).getStock();
+            System.out.println("[도서번호 : " + bookNumber + "] + [도서명 : " + bookHash.get(bookNumber).getName() + "]의 수량이 "
+                    + originalStock + "에서 " + updateStock + "로 증가되었습니다.");
+
         } else {
             System.out.println("현재 보유중인 도서가 아닙니다.\n");
             return false;
@@ -100,11 +101,11 @@ public class BookManage {
         String bookNumber = scanner.next();
         if (member.getBookHash().containsKey(bookNumber)) {
             bookHash.get(bookNumber).AddStock();
-            System.out.println("[도서번호 : "+ bookNumber +"]"+" + "+"[도서명 : "+ member.getBookHash().get(bookNumber).getName()+
+            System.out.println("[도서번호 : " + bookNumber + "]" + " + " + "[도서명 : " + member.getBookHash().get(bookNumber).getName() +
                     "]이 정상적으로 반납되었습니다.\n");
             member.getBookHash().remove(bookNumber, bookHash.get(bookNumber));
             return true;
-        }else{
+        } else {
             System.out.println("대여중인 도서가 아닙니다.");
             return false;
         }
@@ -119,17 +120,17 @@ public class BookManage {
         String bookNumber = scanner.next();
         if (bookHash.containsKey(bookNumber) && bookHash.get(bookNumber).getStock() > 0) {
             bookHash.get(bookNumber).SubstractStock();
-            System.out.println("[도서번호 : "+ bookNumber +"]"+" + "+"[도서명 : "+ bookHash.get(bookNumber).getName()+
+            System.out.println("[도서번호 : " + bookNumber + "]" + " + " + "[도서명 : " + bookHash.get(bookNumber).getName() +
                     "]이 정상적으로 대여되었습니다.\n");
-            try{
+            try {
                 member.bookHash.put(bookNumber, bookHash.get(bookNumber));
-            }catch (NullPointerException n){
+            } catch (NullPointerException n) {
                 HashMap<String, Book> hashMap = new HashMap<>();
                 hashMap.put(bookNumber, bookHash.get(bookNumber));
                 member.bookHash = hashMap;
             }
             return true;
-        }else{
+        } else {
             System.out.println("도서가 존재하지 않거나 재고가 없어 대여 불가능");
             return false;
         }

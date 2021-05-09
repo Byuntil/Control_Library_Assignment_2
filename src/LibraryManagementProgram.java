@@ -67,9 +67,9 @@ public class LibraryManagementProgram {
                         System.out.println("회원가입 완료");
                     } else if (userMode == 2) {
                         currentPerson = libManager.getMemberManage().Login();
-                        if(currentPerson == null){
+                        if (currentPerson == null) {
                             System.out.println("로그인 실패!!");
-                        }else {
+                        } else {
                             System.out.println("로그인 성공!\n");
                         }
                     } else if (userMode == 3) {

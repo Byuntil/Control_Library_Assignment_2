@@ -37,17 +37,16 @@ public class TotalLibraryManage {
             switch (mangerRunMenu) {
                 case 1 -> getBookManage().printBookList();
                 case 2 -> {
-                    if(!getBookManage().AddBook())
-                    {
+                    if (!getBookManage().AddBook()) {
                         bool = false;
-                    }else{
+                    } else {
                         continue;
                     }
                 }
                 case 3 -> {
-                    if(!getBookManage().UpdateBookStock()){
-                        bool=false;
-                    }else{
+                    if (!getBookManage().UpdateBookStock()) {
+                        bool = false;
+                    } else {
                         continue;
                     }
                 }

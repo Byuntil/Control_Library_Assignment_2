@@ -18,7 +18,7 @@ public class MemberManage {
          재입력, 재입력된 ID 가 중복되지 않으면 루프 탈출
         */
 
-        while(true) {
+        while (true) {
             System.out.print("ID : ");
             String userID = scanner.next();
             if (!memberHash.containsKey(userID)) {
@@ -46,10 +46,10 @@ public class MemberManage {
         String userID = scanner.next();
         System.out.print("비밀번호 : ");
         String userPassword = scanner.next();
-        if(memberHash.containsKey(userID) && memberHash.get(userID).getPassword().equals(userPassword)){
+        if (memberHash.containsKey(userID) && memberHash.get(userID).getPassword().equals(userPassword)) {
             member = memberHash.get(userID);
             return member;
-        }else{
+        } else {
             return member;
         }
 
@@ -60,8 +60,8 @@ public class MemberManage {
          (M)
          memberHash 로부터 회원 리스트 출력
         */
-        memberHash.forEach((key, value)->{
-            System.out.println("ID : "+memberHash.get(key).getID()+", "+"이름 : "+memberHash.get(key).getName());
+        memberHash.forEach((key, value) -> {
+            System.out.println("ID : " + memberHash.get(key).getID() + ", " + "이름 : " + memberHash.get(key).getName());
         });
 
     }
